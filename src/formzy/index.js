@@ -128,7 +128,7 @@ class Formzy extends PureComponent {
         }, {}),
         isFormValid,
       },
-      () => this.props.onChange(this.toConsumerFields(this.state.fields))
+      () => this.props.onChange(this.stateToData())
     );
   };
   consumerProps = () => ({
