@@ -11,7 +11,7 @@
 - Async data loading to pre-populate forms
 - Validation
 
-### Example
+### [Example](https://formzy.surge.sh)
 
 ```js
 import React, {PureComponent} from 'react'
