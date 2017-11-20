@@ -1,7 +1,7 @@
 {
  "name": "formzy",
  "version": "1.0.0",
- "main": "index.js",
+ "main": "lib/index.js",
  "license": "MIT",
  "devDependencies": {
   "babel-cli": "^6.26.0",
@@ -26,8 +26,9 @@
  "scripts": {
   "build": "babel src/formzy -d lib",
   "test": "react-scripts test --env=jsdom",
-  "start": "react-scripts start",
+  "start": "PORT=4000 react-scripts start",
   "build:example": "react-scripts build",
+  "publish:example": "surge -p ./build -d formzy.surge.sh",
   "pre-publish": "yarn build",
 	"lint": "eslint .",
 	"prettier":
