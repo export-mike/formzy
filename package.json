@@ -30,14 +30,16 @@
   "build:example": "react-scripts build",
   "publish:example": "surge -p ./build -d formzy.surge.sh",
   "pre-publish": "yarn build",
-	"lint": "eslint .",
-	"prettier":
-	"prettier --single-quote --trailing-comma es5 --write \"{app,__{tests,mocks}__}/**/*.js\""
+  "lint": "eslint .",
+  "prettier": "prettier --single-quote --trailing-comma es5 --write \"{app,__{tests,mocks}__}/**/*.js\""
  },
  "peerDependencies": {
-  	"react": "*"
+  "react": "*"
  },
  "lint-staged": {
-    "*.{js,json,css}": ["yarn run prettier --", "git add"]
+  "*.{js,json,css}": [
+   "yarn run prettier --",
+   "git add"
+  ]
  }
 }
