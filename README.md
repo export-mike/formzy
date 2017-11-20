@@ -89,7 +89,8 @@ export default class BasicExample extends PureComponent {
       />
     </div>
   }
-} ```
+}
+```
 
 
 # Alternatives
