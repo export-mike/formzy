@@ -43,6 +43,8 @@
  "lint-staged": {
   "*.{js,json,css}": [
    "yarn run prettier --",
+   "yarn build",
+   "git add lib/"
    "git add"
   ]
  }
