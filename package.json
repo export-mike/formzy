@@ -32,7 +32,7 @@
     "react-test-renderer": "^16.1.1"
   },
   "scripts": {
-    "build": "babel src/formzy/index.js -d lib",
+    "build": "babel src/formzy -d lib && rm lib/index.test.js",
     "precommit": "lint-staged",
     "test":
       "react-scripts test --env=jsdom --coverage src/formzy/index.test.js",
