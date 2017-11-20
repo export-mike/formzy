@@ -10,6 +10,7 @@ exports[`Form should render as expected after blur 1`] = `
       "model": "200",
     }
   }
+  onChange={[Function]}
   render={[Function]}
   validate={[Function]}
 >
@@ -52,6 +53,7 @@ exports[`Form should render as expected after focus 1`] = `
       "model": "200",
     }
   }
+  onChange={[Function]}
   render={[Function]}
   validate={[Function]}
 >
@@ -125,6 +127,7 @@ exports[`Form should render with initial values from fail fetch loading state 1`
 <Formzy
   fetch={[Function]}
   fields={[Function]}
+  onChange={[Function]}
   render={[Function]}
   validate={[Function]}
 >
@@ -164,6 +167,7 @@ exports[`Form should render with initial values from fetch with loading state 1`
 <Formzy
   fetch={[Function]}
   fields={[Function]}
+  onChange={[Function]}
   render={[Function]}
   validate={[Function]}
 >
@@ -203,6 +207,7 @@ exports[`Form should render with initial values from fetch without loading state
 <Formzy
   fetch={[Function]}
   fields={[Function]}
+  onChange={[Function]}
   render={[Function]}
   validate={[Function]}
 >
@@ -277,6 +282,7 @@ exports[`Form should render with submit correct render props and call submit cal
       "model": "200",
     }
   }
+  onChange={[Function]}
   render={[Function]}
   submit={[Function]}
   validate={[Function]}
@@ -396,6 +402,7 @@ exports[`Form should render with updated value 1`] = `
       "model": "200",
     }
   }
+  onChange={[Function]}
   render={[Function]}
   validate={[Function]}
 >

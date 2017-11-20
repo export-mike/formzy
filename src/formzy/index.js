@@ -20,6 +20,7 @@ class Formzy extends PureComponent {
     validate: () => ({}),
     fields: {},
     render: () => null,
+    onChange: () => {},
   };
   constructor(props) {
     super(props);
@@ -112,20 +113,23 @@ class Formzy extends PureComponent {
   validate = () => {
     const errors = this.props.validate(this.stateToData());
     const isFormValid = Object.keys(errors).length ? false : true;
-    this.setState({
-      ...this.state,
-      fields: Object.keys(this.state.fields).reduce((acc, k) => {
-        if (!this.state.fields[k]) return acc;
-        return {
-          ...acc,
-          [k]: {
-            ...this.state.fields[k],
-            error: errors[k],
-          },
-        };
-      }, {}),
-      isFormValid,
-    });
+    this.setState(
+      {
+        ...this.state,
+        fields: Object.keys(this.state.fields).reduce((acc, k) => {
+          if (!this.state.fields[k]) return acc;
+          return {
+            ...acc,
+            [k]: {
+              ...this.state.fields[k],
+              error: errors[k],
+            },
+          };
+        }, {}),
+        isFormValid,
+      },
+      () => this.props.onChange(this.toConsumerFields(this.state.fields))
+    );
   };
   consumerProps = () => ({
     fields: this.toConsumerFields(this.state.fields),
