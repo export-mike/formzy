@@ -84,58 +84,44 @@ exports[`Form should render as expected after focus 1`] = `
 </Formzy>
 `;
 
-exports[`Form should render with initial values from fail fetch loading state 1`] = `
-<Formzy
-  fields={[Function]}
-  initialValue={
-    Object {
-      "created": 1990-10-10T00:10:10.000Z,
-      "make": "rover",
-      "mileage": 97000,
-      "model": "200",
-    }
-  }
-  render={[Function]}
-  validate={[Function]}
->
-  <form>
-    <input
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="Make"
-      type="text"
-      value="rover"
-    />
-    <input
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="Created"
-      type="date"
-      value={1990-10-10T00:10:10.000Z}
-    />
-    <input
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="Model"
-      type="text"
-      value="200"
-    />
-    <input
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="Mileage (Miles)"
-      type="number"
-      value={10000}
-    />
-  </form>
-</Formzy>
+exports[`Form should render with date field 1`] = `
+<form>
+  <input
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="Make"
+    type="text"
+    value="rover"
+  />
+  <input
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="Created"
+    type="date"
+    value={1990-10-10T00:10:10.000Z}
+  />
+  <input
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="Model"
+    type="text"
+    value="200"
+  />
+  <input
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="Mileage (Miles)"
+    type="number"
+    value={97000}
+  />
+</form>
 `;
 
-exports[`Form should render with initial values from fail fetch loading state 2`] = `
+exports[`Form should render with initial values from fail fetch loading state 1`] = `
 <Formzy
   fetch={[Function]}
   fields={[Function]}

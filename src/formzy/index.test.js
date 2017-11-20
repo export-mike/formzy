@@ -374,74 +374,71 @@ test('Form should render with date field', () => {
     model: '200',
     mileage: 97000,
   };
-  const tree = mount(
-    <Formzy
-      initialValue={initialValue}
-      fields={car => ({
-        make: {
-          label: 'Make',
-          value: car.make,
-        },
-        created: {
-          label: 'Created',
-          value: car.created,
-          type: 'date',
-        },
-        model: {
-          label: 'Model',
-          value: car.model,
-        },
-        mileage: {
-          label: 'Mileage (Miles)',
-          value: car.mileage,
-          type: 'number',
-        },
-      })}
-      render={({ fields, loading }) => (
-        <form>
-          {loading && <div>Loading...</div>}
-          <input
-            type={fields.make.type}
-            onChange={fields.make.onChange}
-            onBlur={fields.make.onBlur}
-            onFocus={fields.make.onFocus}
-            value={fields.make.value}
-            placeholder={fields.make.label}
-          />
-          <input
-            type={fields.created.type}
-            onChange={fields.created.onChange}
-            onBlur={fields.created.onBlur}
-            onFocus={fields.created.onFocus}
-            value={fields.created.value}
-            placeholder={fields.created.label}
-          />
-          <input
-            type={fields.model.type}
-            onChange={fields.model.onChange}
-            onBlur={fields.model.onBlur}
-            onFocus={fields.model.onFocus}
-            value={fields.model.value}
-            placeholder={fields.model.label}
-          />
-          <input
-            type={fields.mileage.type}
-            onChange={fields.mileage.onChange}
-            onBlur={fields.mileage.onBlur}
-            onFocus={fields.mileage.onFocus}
-            value={fields.mileage.value}
-            placeholder={fields.mileage.label}
-          />
-        </form>
-      )}
-    />
-  );
-  setTimeout(() => {
-    const input = tree.find('input[placeholder="Mileage (Miles)"]');
-    input.simulate('change', { target: { value: '10000' } });
-    expect(toJson(tree)).toMatchSnapshot();
-    cb();
-  }, 0);
+  const wrapper = renderer
+    .create(
+      <Formzy
+        initialValue={initialValue}
+        fields={car => ({
+          make: {
+            label: 'Make',
+            value: car.make,
+          },
+          created: {
+            label: 'Created',
+            value: car.created,
+            type: 'date',
+          },
+          model: {
+            label: 'Model',
+            value: car.model,
+          },
+          mileage: {
+            label: 'Mileage (Miles)',
+            value: car.mileage,
+            type: 'number',
+          },
+        })}
+        render={({ fields, loading }) => (
+          <form>
+            {loading && <div>Loading...</div>}
+            <input
+              type={fields.make.type}
+              onChange={fields.make.onChange}
+              onBlur={fields.make.onBlur}
+              onFocus={fields.make.onFocus}
+              value={fields.make.value}
+              placeholder={fields.make.label}
+            />
+            <input
+              type={fields.created.type}
+              onChange={fields.created.onChange}
+              onBlur={fields.created.onBlur}
+              onFocus={fields.created.onFocus}
+              value={fields.created.value}
+              placeholder={fields.created.label}
+            />
+            <input
+              type={fields.model.type}
+              onChange={fields.model.onChange}
+              onBlur={fields.model.onBlur}
+              onFocus={fields.model.onFocus}
+              value={fields.model.value}
+              placeholder={fields.model.label}
+            />
+            <input
+              type={fields.mileage.type}
+              onChange={fields.mileage.onChange}
+              onBlur={fields.mileage.onBlur}
+              onFocus={fields.mileage.onFocus}
+              value={fields.mileage.value}
+              placeholder={fields.mileage.label}
+            />
+          </form>
+        )}
+      />
+    )
+    .toJSON();
+  expect(wrapper).toMatchSnapshot();
 });
 
 test('Form should render with submit correct render props and call submit callback', () => {
