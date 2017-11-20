@@ -89,7 +89,6 @@ class Formzy extends PureComponent {
   }
   onChange = field => e => {
     const value = field.getValue(e);
-    console.log('value', e.target.value)
     this.setState({
        ...this.state,
        fields: {
