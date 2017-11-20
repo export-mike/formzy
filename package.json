@@ -1,8 +1,12 @@
 {
  "name": "formzy",
- "version": "1.0.0-beta-1",
+ "version": "1.0.0-beta-2",
  "main": "lib/index.js",
  "license": "MIT",
+ "repository": {
+  "type": "git",
+  "url": "https://github.com/export-mike/formzy.git"
+ },
  "devDependencies": {
   "babel-cli": "^6.26.0",
   "babel-plugin-transform-async-to-generator": "^6.24.1",
