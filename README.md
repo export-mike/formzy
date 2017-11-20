@@ -1,6 +1,6 @@
 ![Formzy logo](logo-small.png)
 
-# Eazy forms
+# Eazy forms for React
 
 ```yarn add formzy```
 
