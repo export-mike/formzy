@@ -13,6 +13,9 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "enzyme-to-json": "^3.2.2",
     "eslint": "^4.11.0",
     "eslint-config-prettier": "^2.8.0",
     "eslint-config-react-app": "^2.0.1",
@@ -25,12 +28,14 @@
     "prettier": "^1.8.2",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "react-scripts": "^1.0.17"
+    "react-scripts": "^1.0.17",
+    "react-test-renderer": "^16.1.1"
   },
   "scripts": {
     "build": "babel src/formzy -d lib",
     "precommit": "lint-staged",
-    "test": "react-scripts test --env=jsdom",
+    "test":
+      "react-scripts test --env=jsdom --coverage src/formzy/index.test.js",
     "start": "PORT=4000 react-scripts start",
     "build:example": "react-scripts build",
     "publish:example": "surge -p ./build -d formzy.surge.sh",
@@ -44,5 +49,8 @@
   },
   "lint-staged": {
     "*.{js,json,css}": ["yarn run prettier --", "git add lib/", "git add"]
+  },
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }

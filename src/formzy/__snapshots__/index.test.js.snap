@@ -1,0 +1,443 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form should render as expected after blur 1`] = `
+<Formzy
+  fields={[Function]}
+  initialValue={
+    Object {
+      "make": "rover",
+      "mileage": 97000,
+      "model": "200",
+    }
+  }
+  render={[Function]}
+  validate={[Function]}
+>
+  <form>
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Make"
+      type="text"
+      value="rover"
+    />
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Model"
+      type="text"
+      value="200"
+    />
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Mileage (Miles)"
+      type="number"
+      value={10000}
+    />
+  </form>
+</Formzy>
+`;
+
+exports[`Form should render as expected after focus 1`] = `
+<Formzy
+  fields={[Function]}
+  initialValue={
+    Object {
+      "make": "rover",
+      "mileage": 97000,
+      "model": "200",
+    }
+  }
+  render={[Function]}
+  validate={[Function]}
+>
+  <form>
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Make"
+      type="text"
+      value="rover"
+    />
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Model"
+      type="text"
+      value="200"
+    />
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Mileage (Miles)"
+      type="number"
+      value={10000}
+    />
+  </form>
+</Formzy>
+`;
+
+exports[`Form should render with initial values from fail fetch loading state 1`] = `
+<Formzy
+  fields={[Function]}
+  initialValue={
+    Object {
+      "created": 1990-10-10T00:10:10.000Z,
+      "make": "rover",
+      "mileage": 97000,
+      "model": "200",
+    }
+  }
+  render={[Function]}
+  validate={[Function]}
+>
+  <form>
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Make"
+      type="text"
+      value="rover"
+    />
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Created"
+      type="date"
+      value={1990-10-10T00:10:10.000Z}
+    />
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Model"
+      type="text"
+      value="200"
+    />
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Mileage (Miles)"
+      type="number"
+      value={10000}
+    />
+  </form>
+</Formzy>
+`;
+
+exports[`Form should render with initial values from fail fetch loading state 2`] = `
+<Formzy
+  fetch={[Function]}
+  fields={[Function]}
+  render={[Function]}
+  validate={[Function]}
+>
+  <form>
+    <div>
+      Error Loading :( ...
+    </div>
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Make"
+      type="text"
+      value=""
+    />
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Model"
+      type="text"
+      value=""
+    />
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Mileage (Miles)"
+      type="number"
+      value={10000}
+    />
+  </form>
+</Formzy>
+`;
+
+exports[`Form should render with initial values from fetch with loading state 1`] = `
+<Formzy
+  fetch={[Function]}
+  fields={[Function]}
+  render={[Function]}
+  validate={[Function]}
+>
+  <form>
+    <div>
+      Loading...
+    </div>
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Make"
+      type="text"
+      value=""
+    />
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Model"
+      type="text"
+      value=""
+    />
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Mileage (Miles)"
+      type="number"
+      value={10000}
+    />
+  </form>
+</Formzy>
+`;
+
+exports[`Form should render with initial values from fetch without loading state 1`] = `
+<Formzy
+  fetch={[Function]}
+  fields={[Function]}
+  render={[Function]}
+  validate={[Function]}
+>
+  <form>
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Make"
+      type="text"
+      value="rover"
+    />
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Model"
+      type="text"
+      value="200"
+    />
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Mileage (Miles)"
+      type="number"
+      value={10000}
+    />
+  </form>
+</Formzy>
+`;
+
+exports[`Form should render with initialValue 1`] = `
+<form>
+  <input
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="Make"
+    type="text"
+    value="rover"
+  />
+  <input
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="Model"
+    type="text"
+    value="200"
+  />
+  <input
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="Mileage (Miles)"
+    type="number"
+    value={97000}
+  />
+</form>
+`;
+
+exports[`Form should render with no errors 1`] = `null`;
+
+exports[`Form should render with submit correct render props and call submit callback 1`] = `
+<Formzy
+  fields={[Function]}
+  initialValue={
+    Object {
+      "created": 1990-10-10T00:10:10.000Z,
+      "make": "rover",
+      "mileage": 97000,
+      "model": "200",
+    }
+  }
+  render={[Function]}
+  submit={[Function]}
+  validate={[Function]}
+>
+  <Component
+    errorLoading={false}
+    errorSubmitting={false}
+    fetch={[Function]}
+    fields={
+      Object {
+        "created": Object {
+          "dirty": 1990-10-10T00:10:10.000Z,
+          "error": undefined,
+          "key": "created",
+          "label": "Created",
+          "onBlur": [Function],
+          "onChange": [Function],
+          "onFocus": [Function],
+          "touched": false,
+          "type": "date",
+          "value": 1990-10-10T00:10:10.000Z,
+        },
+        "make": Object {
+          "dirty": "rover",
+          "error": undefined,
+          "key": "make",
+          "label": "Make",
+          "onBlur": [Function],
+          "onChange": [Function],
+          "onFocus": [Function],
+          "touched": false,
+          "type": "text",
+          "value": "rover",
+        },
+        "mileage": Object {
+          "dirty": 97000,
+          "error": undefined,
+          "key": "mileage",
+          "label": "Mileage (Miles)",
+          "onBlur": [Function],
+          "onChange": [Function],
+          "onFocus": [Function],
+          "touched": true,
+          "type": "number",
+          "value": 10000,
+        },
+        "model": Object {
+          "dirty": "200",
+          "error": undefined,
+          "key": "model",
+          "label": "Model",
+          "onBlur": [Function],
+          "onChange": [Function],
+          "onFocus": [Function],
+          "touched": false,
+          "type": "text",
+          "value": "200",
+        },
+      }
+    }
+    formTouched={false}
+    isFormValid={true}
+    loading={false}
+    submit={[Function]}
+    submitting={false}
+  >
+    <form>
+      <input
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Make"
+        type="text"
+        value="rover"
+      />
+      <input
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Created"
+        type="date"
+        value={1990-10-10T00:10:10.000Z}
+      />
+      <input
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Model"
+        type="text"
+        value="200"
+      />
+      <input
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Mileage (Miles)"
+        type="number"
+        value={10000}
+      />
+      <button
+        onClick={[Function]}
+      >
+        Save
+      </button>
+    </form>
+  </Component>
+</Formzy>
+`;
+
+exports[`Form should render with updated value 1`] = `
+<Formzy
+  fields={[Function]}
+  initialValue={
+    Object {
+      "make": "rover",
+      "mileage": 97000,
+      "model": "200",
+    }
+  }
+  render={[Function]}
+  validate={[Function]}
+>
+  <form>
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Make"
+      type="text"
+      value="rover"
+    />
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Model"
+      type="text"
+      value="200"
+    />
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Mileage (Miles)"
+      type="number"
+      value={10000}
+    />
+  </form>
+</Formzy>
+`;

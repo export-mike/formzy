@@ -1,4 +1,4 @@
-import {PureComponent} from 'react';
+import { PureComponent } from 'react';
 
 const GET_VALUES = {
   text: e => e.target.value,
@@ -9,18 +9,17 @@ const GET_VALUES = {
   date: e => new Date(e.target.value),
   radio: e => e.target.value === 'on',
   object: e => e,
-  custom: e => e
-}
+  custom: e => e,
+};
 const DEFAULT_FIELD_VALUE = '';
 const DEFAULT_FIELD_TYPE = 'text';
 const isDirty = v => v === 0 || v || v.length;
-const isFunction = fn => typeof(fn) === 'function';
+const isFunction = fn => typeof fn === 'function';
 class Formzy extends PureComponent {
   static defaultProps = {
     validate: () => ({}),
     fields: {},
     render: () => null,
-    rethrow: false
   };
   constructor(props) {
     super(props);
@@ -31,8 +30,8 @@ class Formzy extends PureComponent {
       errorLoading: false,
       loading: false,
       submitting: false,
-      errorSubmitting: false
-    }
+      errorSubmitting: false,
+    };
   }
   constructFields = fields => {
     return Object.keys(fields).reduce((_fields, fieldKey) => {
@@ -47,60 +46,69 @@ class Formzy extends PureComponent {
       field.onBlur = this.onBlur(field);
       field.onFocus = this.onFocus(field);
       field.key = fieldKey;
-      return {..._fields, [fieldKey]: field}
+      return { ..._fields, [fieldKey]: field };
     }, {});
-  }
+  };
   onBlur = field => e => {
     const value = field.getValue(e);
-    this.setState({
-     ...this.state,
-     fields: {
-        ...this.state.fields,
-        [field.key]: {
-         ...field,
-         touched: true,
-         dirty: isDirty(value),
-         value
-        }
-     }
-    }, this.validate);
-  }
+    this.setState(
+      {
+        ...this.state,
+        fields: {
+          ...this.state.fields,
+          [field.key]: {
+            ...field,
+            touched: true,
+            dirty: isDirty(value),
+            value,
+          },
+        },
+      },
+      this.validate
+    );
+  };
   onFocus = field => e => {
     const value = field.getValue(e);
-    this.setState({
-     ...this.state,
-     fields: {
-       ...this.state.fields,
-       [field.key]: {
-        ...field,
-        touched: true,
-        value
+    this.setState(
+      {
+        ...this.state,
+        fields: {
+          ...this.state.fields,
+          [field.key]: {
+            ...field,
+            touched: true,
+            value,
+          },
+        },
+        formTouched: true,
       },
-    },
-    formTouched: true,
-  }, this.validate);
-  }
+      this.validate
+    );
+  };
   fields = d => {
     let fieldMapper = this.props.fields;
-    if (!isFunction(this.props.fields)){
+    if (!isFunction(this.props.fields)) {
       fieldMapper = () => this.props.fields;
     }
     return fieldMapper(d);
-  }
+  };
   onChange = field => e => {
     const value = field.getValue(e);
-    this.setState({
-       ...this.state,
-       fields: {
-         ...this.state.fields,
-         [field.key]: {
-          ...field,
-          touched: true,
-          value
-         },
-       }
-     }, this.validate);
-  }
+    this.setState(
+      {
+        ...this.state,
+        fields: {
+          ...this.state.fields,
+          [field.key]: {
+            ...field,
+            touched: true,
+            value,
+          },
+        },
+      },
+      this.validate
+    );
+  };
   validate = () => {
     const errors = this.props.validate(this.stateToData());
     const isFormValid = Object.keys(errors).length ? false : true;
@@ -112,13 +120,13 @@ class Formzy extends PureComponent {
           ...acc,
           [k]: {
             ...this.state.fields[k],
-            error: errors[k]
-          }
-        }
+            error: errors[k],
+          },
+        };
       }, {}),
-      isFormValid
+      isFormValid,
     });
-  }
+  };
   consumerProps = () => ({
     fields: this.toConsumerFields(this.state.fields),
     isFormValid: this.state.isFormValid,
@@ -128,7 +136,7 @@ class Formzy extends PureComponent {
     loading: this.state.loading,
     errorLoading: this.state.errorLoading,
     submit: this.submit,
-    fetch: fetch
+    fetch: fetch,
   });
   toConsumerFields = fields => {
     return Object.keys(fields).reduce((acc, key) => {
@@ -137,10 +145,10 @@ class Formzy extends PureComponent {
       const { getValue, ...rest } = field;
       return {
         ...acc,
-        [key]: rest
+        [key]: rest,
       };
     }, {});
-  }
+  };
   componentWillMount() {
     if (this.props.fetch) {
       this.fetch(this.props.fetch);
@@ -157,29 +165,33 @@ class Formzy extends PureComponent {
       this.setState({
         ...this.state,
         errorLoading: false,
-        loading: true
+        loading: true,
       });
-      const fields = this.fields((await fn(this.consumerProps())));
-      this.setState({
-        ...this.state,
-        loading: false,
-        fields: this.constructFields(fields)
-      }, this.validate);
+      const fields = this.fields(await fn(this.consumerProps()));
+      this.setState(
+        {
+          ...this.state,
+          loading: false,
+          fields: this.constructFields(fields),
+        },
+        this.validate
+      );
     } catch (e) {
       this.setState({
         ...this.state,
-        errorLoading: true
+        loading: false,
+        errorLoading: true,
       });
     }
-  }
+  };
   stateToData = () => {
     const data = Object.keys(this.state.fields).reduce((acc, k) => {
       if (!this.state.fields[k]) return acc;
-      return {...acc, [k]: this.state.fields[k].value};
+      return { ...acc, [k]: this.state.fields[k].value };
     }, {});
     return data;
-  }
-  submit = async (e) => {
+  };
+  submit = async e => {
     e && e.preventDefault();
     if (!isFunction(this.props.submit)) {
       if (process.env.NODE_ENV !== 'production') {
@@ -191,21 +203,24 @@ class Formzy extends PureComponent {
       this.setState({
         ...this.state,
         submitting: true,
-        errorSubmitting: false
+        errorSubmitting: false,
       });
-      const fields = this.fields((await this.props.submit(this.stateToData(), this.consumerProps())));
+      const fields = this.fields(
+        await this.props.submit(this.stateToData(), this.consumerProps())
+      );
       this.setState({
         ...this.state,
         submitting: false,
-        fields: this.constructFields(fields)
+        fields: this.constructFields(fields),
       });
     } catch (e) {
       this.setState({
         ...this.state,
+        submitting: false,
         errorSubmitting: true,
       });
     }
-  }
+  };
   render() {
     return this.props.render(this.consumerProps());
   }
@@ -215,6 +230,6 @@ export const isEmail = email => {
   /* eslint no-useless-escape: 0 */
   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
-}
+};
 
 export default Formzy;
