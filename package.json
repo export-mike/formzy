@@ -1,51 +1,48 @@
 {
- "name": "formzy",
- "version": "1.0.0-beta-2",
- "main": "lib/index.js",
- "license": "MIT",
- "repository": {
-  "type": "git",
-  "url": "https://github.com/export-mike/formzy.git"
- },
- "devDependencies": {
-  "babel-cli": "^6.26.0",
-  "babel-plugin-transform-async-to-generator": "^6.24.1",
-  "babel-plugin-transform-class-properties": "^6.24.1",
-  "babel-preset-es2015": "^6.24.1",
-  "babel-preset-react": "^6.24.1",
-  "eslint": "^4.11.0",
-  "eslint-config-prettier": "^2.8.0",
-  "eslint-config-react-app": "^2.0.1",
-  "eslint-plugin-flowtype": "^2.39.1",
-  "eslint-plugin-import": "^2.8.0",
-  "eslint-plugin-jsx-a11y": "^6.0.2",
-  "eslint-plugin-react": "^7.5.1",
-  "husky": "^0.14.3",
-  "lint-staged": "^5.0.0",
-  "prettier": "^1.8.2",
-  "react": "^16.1.1",
-  "react-dom": "^16.1.1",
-  "react-scripts": "^1.0.17"
- },
- "scripts": {
-  "build": "babel src/formzy -d lib",
-  "test": "react-scripts test --env=jsdom",
-  "start": "PORT=4000 react-scripts start",
-  "build:example": "react-scripts build",
-  "publish:example": "surge -p ./build -d formzy.surge.sh",
-  "pre-publish": "yarn build",
-  "lint": "eslint .",
-  "prettier": "prettier --single-quote --trailing-comma es5 --write \"{app,__{tests,mocks}__}/**/*.js\""
- },
- "peerDependencies": {
-  "react": "*"
- },
- "lint-staged": {
-  "*.{js,json,css}": [
-   "yarn run prettier --",
-   "yarn build",
-   "git add lib/"
-   "git add"
-  ]
- }
+  "name": "formzy",
+  "version": "1.0.0-beta-2",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/export-mike/formzy.git"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.11.0",
+    "eslint-config-prettier": "^2.8.0",
+    "eslint-config-react-app": "^2.0.1",
+    "eslint-plugin-flowtype": "^2.39.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.5.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^5.0.0",
+    "prettier": "^1.8.2",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-scripts": "^1.0.17"
+  },
+  "scripts": {
+    "build": "babel src/formzy -d lib",
+    "precommit": "lint-staged",
+    "test": "react-scripts test --env=jsdom",
+    "start": "PORT=4000 react-scripts start",
+    "build:example": "react-scripts build",
+    "publish:example": "surge -p ./build -d formzy.surge.sh",
+    "pre-publish": "yarn build && yarn build:example && yarn publish:example",
+    "lint": "eslint .",
+    "prettier":
+      "prettier --single-quote --trailing-comma es5 --write \"{app,__{tests,mocks}__}/**/*.js\""
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "lint-staged": {
+    "*.{js,json,css}": ["yarn run prettier --", "git add lib/", "git add"]
+  }
 }
