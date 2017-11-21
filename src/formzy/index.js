@@ -93,6 +93,7 @@ class Formzy extends PureComponent {
           [field.key]: {
             ...field,
             touched: true,
+            focus: false,
             dirty: isDirty(value),
             value,
           },
@@ -111,6 +112,7 @@ class Formzy extends PureComponent {
           [field.key]: {
             ...field,
             touched: true,
+            focus: true,
             value,
           },
         },

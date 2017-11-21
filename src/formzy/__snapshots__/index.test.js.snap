@@ -294,7 +294,7 @@ exports[`Form should render with submit correct render props and call submit cal
     fields={
       Object {
         "created": Object {
-          "dirty": 1990-10-10T00:10:10.000Z,
+          "dirty": true,
           "error": undefined,
           "key": "created",
           "label": "Created",
@@ -306,7 +306,7 @@ exports[`Form should render with submit correct render props and call submit cal
           "value": 1990-10-10T00:10:10.000Z,
         },
         "make": Object {
-          "dirty": "rover",
+          "dirty": true,
           "error": undefined,
           "key": "make",
           "label": "Make",
@@ -318,7 +318,7 @@ exports[`Form should render with submit correct render props and call submit cal
           "value": "rover",
         },
         "mileage": Object {
-          "dirty": 97000,
+          "dirty": true,
           "error": undefined,
           "key": "mileage",
           "label": "Mileage (Miles)",
@@ -330,7 +330,7 @@ exports[`Form should render with submit correct render props and call submit cal
           "value": 10000,
         },
         "model": Object {
-          "dirty": "200",
+          "dirty": true,
           "error": undefined,
           "key": "model",
           "label": "Model",
