@@ -26,7 +26,7 @@ const TO_DATA = {
   number: field => field.value,
   float: field => field.value,
   date: field => field.value,
-  radio: field => field.value.filter(option => option.checked),
+  radio: field => field.value.find(option => option.checked),
   object: field => field.value,
   array: field => field.value.filter(option => option.checked),
 };
