@@ -1,19 +1,56 @@
 import { PureComponent } from 'react';
 
 const GET_VALUES = {
-  text: e => e.target.value,
-  email: e => e.target.value,
-  password: e => e.target.value,
-  number: e => parseInt(e.target.value, 10),
-  float: e => parseFloat(e.target.value),
-  date: e => new Date(e.target.value),
-  radio: e => e.target.value === 'on',
-  object: e => e,
-  custom: e => e,
+  text: (field, e) => e.target.value,
+  email: (field, e) => e.target.value,
+  password: (field, e) => e.target.value,
+  number: (field, e) => parseInt(e.target.value, 10),
+  float: (field, e) => parseFloat(e.target.value),
+  date: (field, e) => new Date(e.target.value),
+  radio: (field, e) =>
+    field.value.map(option => ({
+      ...option,
+      checked: option.id === e.id,
+    })),
+  object: (field, e) => e,
+  array: (field, e) =>
+    field.value.map(option => ({
+      ...option,
+      checked: option.id === e.id ? !option.checked : option.checked,
+    })),
 };
-const DEFAULT_FIELD_VALUE = '';
+const TO_DATA = {
+  text: field => field.value,
+  email: field => field.value,
+  password: field => field.value,
+  number: field => field.value,
+  float: field => field.value,
+  date: field => field.value,
+  radio: field => field.value.filter(option => option.checked),
+  object: field => field.value,
+  array: field => field.value.filter(option => option.checked),
+};
+const toData = field => {
+  return TO_DATA[field.type](field);
+};
+
+const getValue = (field, e) => GET_VALUES[field.type](field, e);
+
+const DEFAULT_FIELD_VALUES = {
+  text: '',
+  email: '',
+  password: '',
+  number: '',
+  float: '',
+  date: '',
+  checkbox: undefined,
+  radio: undefined,
+  object: undefined,
+  array: [],
+};
+
 const DEFAULT_FIELD_TYPE = 'text';
-const isDirty = v => v === 0 || v || v.length;
+const isDirty = v => !!v;
 const isFunction = fn => typeof fn === 'function';
 class Formzy extends PureComponent {
   static defaultProps = {
@@ -37,21 +74,17 @@ class Formzy extends PureComponent {
   constructFields = fields => {
     return Object.keys(fields).reduce((_fields, fieldKey) => {
       const field = fields[fieldKey];
-      field.value = field.value || DEFAULT_FIELD_VALUE;
       field.type = field.type || DEFAULT_FIELD_TYPE;
-      field.getValue = GET_VALUES[field.type];
+      field.value = field.value || DEFAULT_FIELD_VALUES[field.type];
       field.touched = field.touched || false;
       field.dirty = isDirty(field.value);
       field.error = undefined;
-      field.onChange = this.onChange(field);
-      field.onBlur = this.onBlur(field);
-      field.onFocus = this.onFocus(field);
       field.key = fieldKey;
       return { ..._fields, [fieldKey]: field };
     }, {});
   };
   onBlur = field => e => {
-    const value = field.getValue(e);
+    const value = getValue(field, e);
     this.setState(
       {
         ...this.state,
@@ -69,7 +102,7 @@ class Formzy extends PureComponent {
     );
   };
   onFocus = field => e => {
-    const value = field.getValue(e);
+    const value = getValue(field, e);
     this.setState(
       {
         ...this.state,
@@ -94,7 +127,7 @@ class Formzy extends PureComponent {
     return fieldMapper(d);
   };
   onChange = field => e => {
-    const value = field.getValue(e);
+    const value = getValue(field, e);
     this.setState(
       {
         ...this.state,
@@ -149,7 +182,12 @@ class Formzy extends PureComponent {
       const { getValue, ...rest } = field;
       return {
         ...acc,
-        [key]: rest,
+        [key]: {
+          ...rest,
+          onChange: this.onChange(field),
+          onBlur: this.onBlur(field),
+          onFocus: this.onFocus(field),
+        },
       };
     }, {});
   };
@@ -191,7 +229,7 @@ class Formzy extends PureComponent {
   stateToData = () => {
     const data = Object.keys(this.state.fields).reduce((acc, k) => {
       if (!this.state.fields[k]) return acc;
-      return { ...acc, [k]: this.state.fields[k].value };
+      return { ...acc, [k]: toData(this.state.fields[k]) };
     }, {});
     return data;
   };
