@@ -231,7 +231,10 @@ class Formzy extends PureComponent {
       if (!this.state.fields[k]) return acc;
       return { ...acc, [k]: toData(this.state.fields[k]) };
     }, {});
-    return data;
+    return {
+      ...data,
+      isFormValid: this.state.isFormValid,
+    };
   };
   submit = async e => {
     e && e.preventDefault();
