@@ -346,6 +346,7 @@ exports[`Form should render with submit correct render props and call submit cal
     formTouched={false}
     isFormValid={true}
     loading={false}
+    setValues={[Function]}
     submit={[Function]}
     submitting={false}
   >
