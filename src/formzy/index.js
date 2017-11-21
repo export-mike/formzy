@@ -175,8 +175,26 @@ class Formzy extends PureComponent {
     loading: this.state.loading,
     errorLoading: this.state.errorLoading,
     submit: this.submit,
-    fetch: fetch,
+    fetch: this.fetch,
+    setValues: this.setValues,
   });
+  setValues = values => {
+    const fields = this.state.fields;
+    const updatedFields = Object.keys(fields).reduce(
+      (updatedFields, key) => ({
+        ...updatedFields,
+        [key]: {
+          ...fields[key],
+          value: values[key] || fields[key].value,
+        },
+      }),
+      {}
+    );
+    this.setState({
+      ...this.state,
+      fields: updatedFields,
+    });
+  };
   toConsumerFields = fields => {
     return Object.keys(fields).reduce((acc, key) => {
       const field = fields[key];
