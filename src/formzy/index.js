@@ -190,10 +190,13 @@ class Formzy extends PureComponent {
       }),
       {}
     );
-    this.setState({
-      ...this.state,
-      fields: updatedFields,
-    });
+    this.setState(
+      {
+        ...this.state,
+        fields: updatedFields,
+      },
+      this.validate
+    );
   };
   toConsumerFields = fields => {
     return Object.keys(fields).reduce((acc, key) => {
